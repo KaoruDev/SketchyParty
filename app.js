@@ -1,6 +1,6 @@
 require('harmonize');
 var app = require('express')();
-require('./server/configs/templating.js')(app);
+require('./server/configs/setup.js')(app);
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
