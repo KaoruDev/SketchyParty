@@ -6,7 +6,7 @@ var runSequence = require('run-sequence');
 gulp.task('watch:client:js', ['webpack'], function () {
   watch('client/scripts/**/*.js', function () {
     runSequence('webpack', function () {
-      livereload();
+      livereload.reload();
     });
   });
 });

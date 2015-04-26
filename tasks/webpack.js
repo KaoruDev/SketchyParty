@@ -8,6 +8,11 @@ gulp.task('webpack', ['clean:js'], function (done) {
     output: {
       path: './client/builds/scripts',
       filename: 'main-bundle.js'
+    },
+    module: {
+      loaders: [
+        { test: /\.js$/,  loader: 'babel-loader', exclude: /node_modules/ }
+      ]
     }
   }, function (err, stats) {
     if (err) {
