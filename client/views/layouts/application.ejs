@@ -6,13 +6,14 @@
 </head>
 <body>
   <%- body %>
-  what! and again
   <script src="/assets/scripts/main-bundle.js"></script>
   <script>
-   document.write('<' + 'script src="http://'
-      + (location.host || 'localhost').split(':')[0]
-      + ':35729/livereload.js"></'
-      + 'script' + '>')
+    if (window.location.host.match(/localhost/)) {
+      document.write('<' + 'script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+        + ':35729/livereload.js"></'
+        + 'script' + '>')
+    }
   </script>
 </body>
 </html>

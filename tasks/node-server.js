@@ -4,10 +4,7 @@ var spawn = require('child_process').spawn;
 var path = require('path');
 var serverPath = path.join(__dirname, '../app.js');
 var liveServer;
-
-var nodeAlert = function (msg) {
-  gutils.log(gutils.colors.green('node {{'), msg, gutils.colors.green('}}'));
-};
+var announce = require('../server/utils/announce-log.js');
 
 gulp.task('node', [
     'watch:node',
@@ -17,11 +14,11 @@ gulp.task('node', [
 
 gulp.task('node:restart', function () {
   if (liveServer) {
-    nodeAlert('Killing node server...');
+    announce('Killing node server...');
     liveServer.kill();
   }
 
-  nodeAlert('Starting server up!');
+  announce('Starting server up!');
   liveServer = spawn('node', [serverPath], { stdio: 'inherit' });
 
   liveServer.on('close', function (code) {
