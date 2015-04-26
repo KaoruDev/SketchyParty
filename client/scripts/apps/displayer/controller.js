@@ -9,8 +9,11 @@ var Controller = Marionette.Controller.extend({
     Marionette.Controller.prototype.constructor.apply(this, arguments);
   },
 
-  display: function () {
-    var model = new Model();
+  display: function (roomName) {
+    var model = new Model({
+      roomName: roomName
+    });
+
     var view = new View({
       model: model
     });
