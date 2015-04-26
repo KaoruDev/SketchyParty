@@ -12,9 +12,17 @@ gulp.task('webpack', ['clean:js'], function (done) {
     },
     module: {
       loaders: [
-        { test: /\.js$/,  loader: 'babel-loader', exclude: /node_modules/ }
+        { test: /\.js$/,  loader: 'babel-loader', exclude: /node_modules/ },
+        { test: /\.ejs$/, loader: 'ejs-loader', exclude: /node_modules/ }
       ]
-    }
+    },
+    plugins: [
+      new webpack.ProvidePlugin({
+        _: 'underscore',
+        $: 'jquery',
+        jQuery: 'jquery'
+      })
+    ]
   }, function (err, stats) {
     if (err) {
       gutils.log(gutils.colors.red('[webpack] ERROR:', stats.toString()));

@@ -14,12 +14,11 @@ var Controller = Marionette.Controller.extend({
       roomName: roomName
     });
 
-    var view = new View({
-      model: model
-    });
-
     model.connect().done(_.bind(function () {
-      this.app.mainRegion.show(view);
+      this.app.mainRegion.show(
+        new View({ model: model })
+      );
+
     }, this));
   }
 });

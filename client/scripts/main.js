@@ -4,6 +4,7 @@ var app = new Backbone.Marionette.Application({
     mainRegion: '#main-container'
   }
 });
+
 require('./apps/displayer/router.js')(app);
 
 app.on('start', function () {
