@@ -9,7 +9,11 @@ var nodeAlert = function (msg) {
   gutils.log(gutils.colors.green('node {{'), msg, gutils.colors.green('}}'));
 };
 
-gulp.task('node', ['watch:node', 'node:restart']);
+gulp.task('node', [
+    'watch:node',
+    'node:restart',
+    'watch:client'
+]);
 
 gulp.task('node:restart', function () {
   if (liveServer) {
