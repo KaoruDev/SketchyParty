@@ -5,6 +5,7 @@ var app = new Backbone.Marionette.Application({
   }
 });
 
+require('./apps/player/router.js')(app);
 require('./apps/displayer/router.js')(app);
 
 app.on('start', function () {
