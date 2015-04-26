@@ -22,7 +22,7 @@ var translateEvent = function (e) {
 module.exports = Backbone.View.extend({
   template: require('../templates/canvas.ejs'),
   initialize: function () {
-    this.listenTo(this.model, 'draw', this.drawCoordinates);
+    this.listenTo(this.model, 'drawing', this.drawCoordinates);
   },
 
   render: function () {

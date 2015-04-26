@@ -2,7 +2,7 @@ var redis = require('../configs/redis.js');
 var uniqueId = require('../utils/unique-id.js');
 var _ = require('underscore');
 var modelName = 'Rooms';
-var io = require('../socket/main.js').get();
+var DrawingSocket = require('../socket/drawing-socket.js');
 const NAMESPACE = 'room:names';
 
 var Room = function (properties) {
@@ -12,7 +12,7 @@ var Room = function (properties) {
 var RoomSockets = {};
 redis.smembers(NAMESPACE, function (err, names) {
   names.forEach(function (name) {
-    RoomSockets[name] = io.of(name);
+    RoomSockets[name] = new DrawingSocket(name);
   });
 });
 
@@ -21,7 +21,7 @@ module.exports = {
     properties = properties || {};
     properties.name = properties.name || uniqueId(modelName);
     redis.sadd(NAMESPACE, properties.name);
-    var socket = io.of(properties.name);
+    var socket = new DrawingSocket(properties.name);
     RoomSockets[properties.name] = socket;
 
     socket.on('connect', function () {
