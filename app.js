@@ -5,7 +5,7 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
 app.get('/', function (req, res) {
-  res.send('hello world');
+  res.render('welcome/index.ejs', {});
 });
 
 io.on('connection', function () {
