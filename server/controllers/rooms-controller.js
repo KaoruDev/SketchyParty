@@ -1,14 +1,20 @@
 var Room = require('../models/room.js');
 
 module.exports = {
-  show: function (req, res) {
+  join: function (req, res) {
     Room.find(req.params.id, function (room) {
-      res.render('rooms/show.ejs', { roomName: room.name });
+      res.render('rooms/join.ejs', { roomName: room.name });
     });
   },
 
   create: function (req, res) {
     var room = Room.create(req.body.room);
-    res.render('rooms/show.ejs', { roomName: room.name });
+    res.redirect(`rooms/${room.name}/display`);
+  },
+
+  display: function (req, res) {
+    Room.find(req.params.id, function (room) {
+      res.render('rooms/display.ejs', { roomName: room.name });
+    });
   }
 };

@@ -7,7 +7,8 @@ gulp.task('webpack', ['clean:js'], function (done) {
     entry: './client/scripts/main.js',
     output: {
       path: './client/builds/scripts',
-      filename: 'main-bundle.js'
+      filename: 'main-bundle.js',
+      devtooLineToLine: { test: /\.js$/, exclude: /node_modules/ }
     },
     module: {
       loaders: [
