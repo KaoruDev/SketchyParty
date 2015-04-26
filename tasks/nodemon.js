@@ -4,7 +4,8 @@ var browserSync = require('browser-sync').create();
 
 var dependentTasks = [
   'watch:client',
-  'browser-sync'
+  'browser-sync',
+  'redis'
 ];
 
 gulp.task('node', dependentTasks, function () {

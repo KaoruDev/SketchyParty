@@ -1,0 +1,11 @@
+<% layout('layouts/application') -%>
+<h1>Welcome to Sketchy Party!</h1>
+<p>Let's start to party! Create a new room:</p>
+<form action="/rooms" method="post">
+  <label>
+    Room Name:
+    <input type="text" name="room[name]">
+  </label>
+
+  <button>Start the Party!</button>
+</form>
