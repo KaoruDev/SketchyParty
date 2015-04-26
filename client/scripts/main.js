@@ -1,5 +1,3 @@
 var io = require('socket.io-client');
-var socket = io();
 
-
-
+console.log(':y ey-yo');

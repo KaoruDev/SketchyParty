@@ -1,12 +1,12 @@
 var gulp = require('gulp');
 var watch = require('gulp-watch');
-var livereload = require('gulp-livereload');
 var runSequence = require('run-sequence');
+var browserSync = require('./browser-sync.js');
 
 gulp.task('watch:client:js', ['webpack'], function () {
   watch('client/scripts/**/*.js', function () {
     runSequence('webpack', function () {
-      livereload.reload();
+      browserSync.reload();
     });
   });
 });
