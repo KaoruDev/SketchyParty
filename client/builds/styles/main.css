@@ -1,0 +1,7 @@
+canvas#drawer, canvas#display {
+  border: 1px black solid;
+  cursor: crosshair;
+  margin: 0px 10px; }
+
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1hbmlmZXN0LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsQUFBTSxBQUFTLEFBQU07RUFDbkIsQUFBUTtFQUNSLEFBQVE7RUFDUixBQUFRIiwiZmlsZSI6Im1hbmlmZXN0LmNzcyIsInNvdXJjZXNDb250ZW50IjpbImNhbnZhcyNkcmF3ZXIsIGNhbnZhcyNkaXNwbGF5IHtcbiAgYm9yZGVyOiAxcHggYmxhY2sgc29saWQ7XG4gIGN1cnNvcjogY3Jvc3NoYWlyO1xuICBtYXJnaW46IDBweCAxMHB4O1xufVxuIl0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9 */

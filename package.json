@@ -4,11 +4,18 @@
   "description": "Awesome sketching with friends!",
   "author": "Kaoru Kohashigawa",
   "license": "MIT",
+  "engines": {
+    "iojs": "1.7.x"
+  },
+  "scripts": {
+    "start": "node app.js"
+  },
   "dependencies": {
     "backbone": "^1.1.2",
     "backbone.marionette": "^2.4.1",
     "backbone.radio": "^0.9.0",
     "body-parser": "^1.12.3",
+    "chalk": "^1.0.0",
     "ejs": "^2.3.1",
     "ejs-mate": "^2.1.0",
     "express": "^4.12.3",

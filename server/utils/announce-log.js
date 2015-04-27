@@ -1,7 +1,7 @@
-var gutils = require('gulp-util');
+var colors = require('chalk');
 
 module.exports = function (msg) {
-  console.log('\n=======', gutils.colors.cyan('Express Log'), '=======\n');
+  console.log('\n=======', colors.cyan('Express Log'), '=======\n');
   console.log(msg, '\n');
 };
 

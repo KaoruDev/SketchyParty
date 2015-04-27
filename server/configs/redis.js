@@ -1,3 +1,13 @@
-var redis = require('redis');
-module.exports = redis.createClient();
+var Redis = require('redis');
+
+if (process.env.REDISTOGO_URL) {
+  var rtg   = require('url').parse(process.env.REDISTOGO_URL);
+  var redis = Redis.createClient(rtg.port, rtg.hostname);
+
+  redis.auth(rtg.auth.split(':')[1]);
+} else {
+  var redis = Redis.createClient();
+}
+
+module.exports = redis;
 

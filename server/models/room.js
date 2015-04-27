@@ -23,21 +23,12 @@ module.exports = {
     redis.sadd(NAMESPACE, properties.name);
     var socket = new DrawingSocket(properties.name);
     RoomSockets[properties.name] = socket;
-
-    socket.on('connect', function () {
-      console.log(arguments);
-    });
-
     return new Room(properties);
   },
 
   find: function (name, callback) {
-    redis.get(name, function (err, raw) {
-      if (err || !raw) {
-        callback(null);
-      } else {
-        callback(JSON.parse(raw));
-      }
+    redis.sismember(NAMESPACE, name, function () {
+      callback({name: name});
     });
   },
 

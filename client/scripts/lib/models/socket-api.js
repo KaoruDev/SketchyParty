@@ -6,7 +6,7 @@ module.exports = {
     var dfd = $.Deferred();
     var drawingModel = this;
 
-    var socket = io(`/${this.get('roomName')}`);
+    var socket = io('/' + this.get('roomName'));
 
     socket.on('connect', function () {
         dfd.resolve();

@@ -9,7 +9,7 @@ module.exports = {
 
   create: function (req, res) {
     var room = Room.create(req.body.room);
-    res.redirect(`rooms/${room.name}/display`);
+    res.redirect('rooms/' + room.name + '/display');
   },
 
   display: function (req, res) {
