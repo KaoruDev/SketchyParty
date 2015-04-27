@@ -37,6 +37,7 @@ module.exports = Backbone.View.extend({
     this.$canvas = this.$('canvas');
     this.resize(Backbone.Radio.channel('window').request('currentDimensions'));
     this.canvasContext = this.$canvas[0].getContext('2d');
+    this.attachCanvasListeners();
     return this;
   },
 
@@ -80,12 +81,15 @@ module.exports = Backbone.View.extend({
 
   resize: function (windowDimensions) {
     if (this.$canvas) {
-      var width = ((16 * windowDimensions.height) / 9) - 150;
-      var height = (9 * width) / 16;
+      var point;
+      if (windowDimensions.width > windowDimensions.height) {
+        point = windowDimensions.height - 100;
+      } else {
+        point = windowDimensions.width - 40;
+      }
 
-      this.$canvas[0].height = height;
-      this.$canvas[0].width = width;
-      this.attachCanvasListeners();
+      this.$canvas[0].height = point;
+      this.$canvas[0].width = point;
     }
   }
 });
