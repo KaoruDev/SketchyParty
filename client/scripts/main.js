@@ -5,6 +5,8 @@ var app = new Backbone.Marionette.Application({
   }
 });
 
+require('./lib/window-resize.js')(app);
+
 require('./apps/player/router.js')(app);
 require('./apps/displayer/router.js')(app);
 

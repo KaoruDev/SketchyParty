@@ -5,6 +5,7 @@ Backbone.$ = $;
 
 var _ = require('underscore');
 var Radio = require('backbone.radio');
+Backbone.Radio = Radio;
 
 Backbone.Marionette = require('backbone.marionette');
 Backbone.Marionette.Application.prototype._initChannel = function () {

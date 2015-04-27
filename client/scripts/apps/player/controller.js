@@ -18,7 +18,6 @@ var Controller = Marionette.Controller.extend({
       this.app.mainRegion.show(
         new ControlsView({ model: model })
       );
-
     }, this));
   }
 });
