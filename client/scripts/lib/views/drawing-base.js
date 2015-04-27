@@ -28,8 +28,15 @@ var translateEvent = function (e) {
 
 module.exports = Backbone.View.extend({
   initialize: function () {
-    this.listenTo(this.model, 'drawing', this.drawCoordinates);
+    this.listenTo(this.model, {
+      drawing: this.drawCoordinates,
+      'drawing:clear': this.clearCanvas
+    });
     Backbone.Radio.channel('window').comply('resize', this.resize, this);
+  },
+
+  events: {
+    'click .clear-canvas': 'triggerClear'
   },
 
   render: function () {
@@ -39,6 +46,10 @@ module.exports = Backbone.View.extend({
     this.canvasContext = this.$canvas[0].getContext('2d');
     this.attachCanvasListeners();
     return this;
+  },
+
+  triggerClear: function () {
+    this.model.emitSocket({modelEvent: 'drawing:clear'});
   },
 
   drawCoordinates: function (data) {
@@ -69,6 +80,7 @@ module.exports = Backbone.View.extend({
     this.$canvas.off(canvasEvents);
     this.$canvas.on(canvasEvents, function (e) {
       drawingView.model.emitSocket({
+        modelEvent: 'drawing',
         eventType: translateEvent(e),
         coordinates: getCoordinates.apply(this, arguments),
         myDimensions: {
@@ -91,6 +103,11 @@ module.exports = Backbone.View.extend({
       this.$canvas[0].height = point;
       this.$canvas[0].width = point;
     }
+  },
+
+  clearCanvas: function () {
+    this.canvasContext.clearRect(0, 0, this.$canvas[0].width, this.$canvas[0].height);
   }
+
 });
 

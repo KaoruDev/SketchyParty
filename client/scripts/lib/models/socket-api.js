@@ -18,7 +18,8 @@ module.exports = {
       });
 
     socket.on('drawing', function (data) {
-      drawingModel.trigger('drawing', JSON.parse(data));
+      var parsed = JSON.parse(data);
+      drawingModel.trigger(parsed.modelEvent, parsed);
     });
 
     this.set('socket', socket);
